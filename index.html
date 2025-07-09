@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writing Hub Submission</title>
+
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <!-- Assuming styles.css will be served from a static directory later or is linked relatively if in the same dir -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body class="bg-gray-100 font-sans custom-bg">
+
+  <!-- Header -->
+  <div class="text-center pt-12 pb-6">
+    <h1 class="text-3xl font-bold text-gray-800">Eduvos Mbombela</h1>
+    <p class="text-base text-blue-500 font-medium">Your Education. Your Future.</p>
+  </div>
+
+  <!-- Form Section -->
+  <div class="flex items-start justify-center px-4 pb-20">
+    <div class="form-container w-full max-w-md">
+
+      <h2 class="form-title">📄 Writing Hub Submission</h2>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <div class="mb-4">
+            {% for category, message in messages %}
+              <div class="p-3 rounded-md {% if category == 'error' %}bg-red-100 text-red-700{% else %}bg-green-100 text-green-700{% endif %}" role="alert">
+                <p>{{ message }}</p>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      <form action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+
+        <!-- Name -->
+        <div class="form-group">
+          <label for="name" class="form-label">Name and Surname</label>
+          <input type="text" name="name" id="name" required class="form-input" placeholder="e.g. John Doe">
+        </div>
+
+        <!-- Subject -->
+        <div class="form-group">
+          <label for="subject" class="form-label">Subject</label>
+          <input type="text" name="subject" id="subject" required class="form-input" placeholder="e.g. Academic Writing">
+        </div>
+
+        <!-- Faculty -->
+        <div class="form-group">
+          <label for="faculty" class="form-label">Faculty</label>
+          <input type="text" name="faculty" id="faculty" required class="form-input" placeholder="e.g. Humanities">
+        </div>
+
+        <!-- Student number -->
+        <div class="form-group">
+          <label for="student_number" class="form-label">Student Number</label>
+          <input type="text" name="student_number" id="student_number" required class="form-input" placeholder="e.g. EDUV1234567">
+        </div>
+
+        <!-- Upload -->
+        <div class="form-group">
+          <label for="document" class="form-label">Upload Word Document</label>
+          <input type="file" name="document" id="document" accept=".doc,.docx" required class="form-input file:bg-white file:border file:border-gray-300 file:rounded-md file:px-4 file:py-2">
+        </div>
+
+        <!-- Submit -->
+        <div class="pt-4">
+          <button type="submit" class="submit-btn">
+            Submit 📤
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  <p class="text-center text-sm pt-8">
+  <a href="{{ url_for('admin_panel') }}" class="text-blue-600 hover:underline">Go to Admin Panel</a>
+</p>
+
+</body>
+</html>
