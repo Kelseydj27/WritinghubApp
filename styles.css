@@ -1,0 +1,60 @@
+.custom-bg {
+  background: linear-gradient(to right, #f0f4f8, #e2e8f0);
+}
+
+.form-container {
+  background-color: #ffffff;
+  padding: 2.5rem;
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.form-input {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 0.5rem;
+  background-color: #f9fafb;
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+  background-color: #fff;
+}
+
+.submit-btn {
+  background-color: #2563eb;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.75rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #1e40af;
+}
