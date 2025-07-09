@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission Successful</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="bg-gray-100 font-sans custom-bg flex items-center justify-center h-screen">
+
+    <div class="form-container w-full max-w-md text-center">
+        <h2 class="form-title mb-4">✅ Submission Successful!</h2>
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <p class="mb-4 text-sm {% if category == 'error' %}text-red-500{% else %}text-green-600{% endif %}">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <p class="text-gray-700 mb-6">
+            Your document and information have been submitted. If an email was configured, it has been sent.
+        </p>
+
+        <div class="space-y-4">
+            <a href="{{ url_for('index') }}" class="block w-full submit-btn bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
+                Submit Another Document
+            </a>
+            <a href="{{ url_for('admin_panel') }}" class="block w-full submit-btn bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded">
+                Go to Admin Panel
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
